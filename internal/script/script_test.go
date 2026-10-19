@@ -21,7 +21,7 @@ steps:
   - wait_for: Sign in
     timeout: 5s
   - click: Sign in
-  - text: kevin@example.com
+  - text: user@example.com
   - screenshot: shots/{device}.png
 `
 
@@ -76,7 +76,7 @@ func TestParseAndRun(t *testing.T) {
 		"launch com.stremio.one",
 		"wait_for Sign in 5s",
 		"click Sign in",
-		"text kevin@example.com",
+		"text user@example.com",
 		"screenshot " + filepath.Join(dir, "shots/smith-tv.png"),
 	}
 	if strings.Join(f.log, "|") != strings.Join(want, "|") {
