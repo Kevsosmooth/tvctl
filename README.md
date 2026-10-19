@@ -14,7 +14,7 @@ these 20 TVs" and have it done in parallel.
   stop it at any time.
 
 > Status: early. The CLI works against TVs on the same network, and the direct
-> link has been tested on a Fire TV Stick (bridge on another device) and an
+> link has been tested on a Fire TV Cube (bridge on another device) and an
 > NVIDIA Shield (bridge on the TV itself). The TV/phone app
 > with the consent screens is next.
 
@@ -51,10 +51,13 @@ tvctl screenshot -t customer -o shot.png
 Fire TV refuses adb from apps on the TV itself, so there the bridge runs on
 another device on the same Wi-Fi. See [docs/fire-tv.md](docs/fire-tv.md).
 
+The TV owner first turns on ADB once; see [docs/setup.md](docs/setup.md).
+
 ## Docs
 
+- [Customer setup, per device, with screenshots](docs/setup.md)
 - [Architecture and connection modes](docs/architecture.md)
-- [Fire TV setup](docs/fire-tv.md)
+- [Why Fire TV needs a phone bridge](docs/fire-tv.md)
 - [Setup scripts](docs/scripts.md)
 
 ![TV app screens (design sample)](docs/screenshots/tv-onboarding.png)

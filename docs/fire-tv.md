@@ -15,6 +15,8 @@ On the Fire TV:
 3. The first time the phone connects, tick "Always allow" and press OK on the
    "Allow USB debugging?" popup.
 
+Step-by-step with screenshots: [setup.md](setup.md#fire-tv).
+
 On the phone: install the app, stay on the same Wi-Fi, share the code.
 
 Nothing is installed on the TV, and "install unknown apps" is not needed: adb
@@ -31,6 +33,6 @@ ADB debugging > Off.
 
 ## Tested 2026-10-18
 
-Helper on a VPS, bridge on a LAN PC standing in for the phone, Fire TV Stick
-(AFTGAZL): linked directly in 11 s with no relay server, screenshot in 0.7 s,
+Helper on a VPS, bridge on a LAN PC standing in for the phone, Fire TV Cube
+(3rd gen, AFTGAZL): linked directly in 11 s with no relay server, screenshot in 0.7 s,
 silent reinstall of a 9.8 MB app in 14 s (about 2 MB/s).
