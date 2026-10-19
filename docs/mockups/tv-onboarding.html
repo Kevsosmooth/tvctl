@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Remote Help - TV app screens (sample)</title>
+<style>
+  :root {
+    --bg-page: #0e1116;
+    --bg-screen: #161b22;
+    --bg-card: #212833;
+    --bg-card-raised: #2b3442;
+    --bg-button: #2b3442;
+    --bg-focus: #f5f7fa;
+    --text-on-focus: #0e1116;
+    --text-main: #f5f7fa;
+    --text-soft: #a9b4c2;
+    --status-on: #1f9d55;
+    --status-off: #c53030;
+    --status-wait: #d69e2e;
+    --accent: #3b82f6;
+    --on-solid: #ffffff;
+    --focus-ring-rgb: 245, 247, 250;
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --radius-pill: 999px;
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-3: 24px;
+    --space-4: 40px;
+    --space-5: 56px;
+    --font: "Inter", "Roboto", system-ui, sans-serif;
+    --text-xs: 15px;
+    --text-sm: 18px;
+    --text-md: 22px;
+    --text-lg: 30px;
+    --text-xl: 44px;
+    --frame-width: 960px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: var(--space-4) var(--space-2);
+    background: var(--bg-page);
+    color: var(--text-main);
+    font-family: var(--font);
+  }
+  header.page { max-width: var(--frame-width); margin: 0 auto var(--space-4); }
+  header.page h1 { font-size: var(--text-lg); margin: 0 0 var(--space-1); }
+  header.page p { color: var(--text-soft); font-size: var(--text-sm); margin: 0; line-height: 1.5; }
+  figure { max-width: var(--frame-width); margin: 0 auto var(--space-5); }
+  figcaption { color: var(--text-soft); font-size: var(--text-sm); margin-bottom: var(--space-2); line-height: 1.5; }
+  figcaption strong { color: var(--text-main); }
+
+  .tv {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    background: var(--bg-screen);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-3);
+    overflow: hidden;
+  }
+  .brand { font-size: var(--text-sm); color: var(--text-soft); font-weight: 600; letter-spacing: 0.02em; }
+  .title { font-size: var(--text-xl); font-weight: 700; margin: 0; line-height: 1.15; }
+  .body { font-size: var(--text-md); color: var(--text-soft); margin: 0; line-height: 1.45; max-width: 34em; }
+
+  .badge {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--on-solid);
+  }
+  .badge.on { background: var(--status-on); }
+  .badge.off { background: var(--status-off); }
+  .badge.wait { background: var(--status-wait); color: var(--text-on-focus); }
+
+  .row { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+  .btn {
+    min-height: 56px;
+    min-width: 180px;
+    padding: 0 var(--space-3);
+    border: 0;
+    border-radius: var(--radius-md);
+    background: var(--bg-button);
+    color: var(--text-main);
+    font: 600 var(--text-md) var(--font);
+    cursor: pointer;
+    transition: transform 120ms ease, background-color 120ms ease, color 120ms ease;
+  }
+  .btn.focused, .btn:focus-visible {
+    background: var(--bg-focus);
+    color: var(--text-on-focus);
+    transform: scale(1.06);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(var(--focus-ring-rgb), 0.35);
+  }
+  .btn.danger.focused { background: var(--status-off); color: var(--on-solid); }
+
+  .code {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: baseline;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3);
+    align-self: flex-start;
+  }
+  .code span { font-size: var(--text-sm); color: var(--text-soft); }
+  .code b { font-size: var(--text-lg); letter-spacing: 0.15em; }
+
+  .split { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--space-3); align-items: center; }
+  .steps { display: flex; gap: var(--space-1); }
+  .steps i { display: block; width: 48px; height: 8px; border-radius: var(--radius-pill); background: var(--bg-card-raised); }
+  .steps i.done { background: var(--status-on); }
+  .steps i.now { background: var(--accent); }
+  .guide { background: var(--bg-card); border-radius: var(--radius-lg); padding: var(--space-3); display: grid; gap: var(--space-2); }
+  .guide div { display: flex; gap: var(--space-2); align-items: center; font-size: var(--text-sm); }
+  .split .btn { min-width: 0; }
+  .guide kbd {
+    flex: none;
+    min-width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-pill);
+    background: var(--bg-card-raised);
+    font: 700 var(--text-sm) var(--font);
+  }
+  .guide .counter { margin-left: auto; color: var(--text-soft); font-size: var(--text-sm); white-space: nowrap; }
+
+  .dialog { background: var(--bg-card); border-radius: var(--radius-lg); padding: var(--space-4); display: grid; gap: var(--space-3); max-width: 640px; align-self: center; }
+  .dialog .badge { justify-self: start; }
+  .check { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-md); color: var(--text-soft); min-height: 44px; }
+  .check i { width: 28px; height: 28px; border-radius: 6px; background: var(--bg-card-raised); flex: none; }
+
+  @media (max-width: 700px) {
+    :root { --text-xl: 26px; --text-lg: 22px; --text-md: 16px; --text-sm: 14px; --space-5: 24px; --space-4: 20px; }
+    .tv { aspect-ratio: auto; }
+    .split { grid-template-columns: 1fr; }
+    .btn { min-width: 0; min-height: 48px; }
+  }
+</style>
+</head>
+<body>
+<header class="page">
+  <h1>Remote Help: TV app screens (sample for approval)</h1>
+  <p>What a customer sees on their Shield, Google TV or Fire TV. Everything is moved with the
+  remote's arrows and OK, and the white button is the one in focus. "Remote Help" and "Kevin" are
+  placeholders for the app name and the helper's name.</p>
+</header>
+
+<figure>
+  <figcaption><strong>1. Connected (home screen of the app).</strong> Opens on its own after
+  install and after every reboot. The customer reads the code to Kevin, which tells Kevin which TV this is.
+  "Stop remote help" sits in focus first, so one press turns it off.</figcaption>
+  <div class="tv">
+    <div class="brand">REMOTE HELP</div>
+    <span class="badge on">Connected</span>
+    <h2 class="title">Kevin can help with this TV</h2>
+    <p class="body">You can keep watching. Kevin will ask before taking control, and you can stop
+    it at any time.</p>
+    <div class="code"><span>Your TV code</span><b>4821</b></div>
+    <div class="row">
+      <button class="btn danger focused">Stop remote help</button>
+      <button class="btn">Settings</button>
+    </div>
+  </div>
+</figure>
+
+<figure>
+  <figcaption><strong>2. Kevin asks to help.</strong> Pops up over whatever is playing. "Always allow
+  Kevin" is off by default. If nobody answers within 60 seconds it counts as "Not now".</figcaption>
+  <div class="tv">
+    <div class="dialog">
+      <span class="badge wait">Waiting for you</span>
+      <h2 class="title">Kevin wants to help with this TV</h2>
+      <p class="body">Kevin will be able to see the screen, open apps and change settings until you stop it.</p>
+      <div class="row">
+        <button class="btn focused">Allow</button>
+        <button class="btn">Not now</button>
+      </div>
+      <div class="check"><i></i>Always allow Kevin on this TV</div>
+    </div>
+  </div>
+</figure>
+
+<figure>
+  <figcaption><strong>3. One-time setup, step 2 of 3.</strong> Only shown the first time. It
+  walks the customer through turning on Developer options (Fire TV wording shown; Shield and Google TV get their own menu names), and the counter on the right goes up
+  as they press OK. On Shield and Google TV, Kevin can do this step for them.</figcaption>
+  <div class="tv">
+    <div class="split">
+      <div style="display:grid; gap: var(--space-3)">
+        <div class="steps"><i class="done"></i><i class="now"></i><i></i></div>
+        <div class="brand">STEP 2 OF 3</div>
+        <h2 class="title">Unlock full help</h2>
+        <p class="body">This lets Kevin install apps and fix settings for you. It takes about a minute.</p>
+        <div class="row">
+          <button class="btn focused">Open Settings</button>
+          <button class="btn">Skip for now</button>
+        </div>
+      </div>
+      <div class="guide">
+        <div><kbd>1</kbd>Go to My Fire TV, then About</div>
+        <div><kbd>2</kbd>Press OK on your TV's name 7 times<span class="counter">3 / 7</span></div>
+        <div><kbd>3</kbd>Go back, open Developer options</div>
+        <div><kbd>4</kbd>Turn on ADB debugging</div>
+      </div>
+    </div>
+  </div>
+</figure>
+
+<figure>
+  <figcaption><strong>4. Stopped.</strong> After "Stop remote help". Kevin's connection is cut right
+  away, and it stays off after a reboot until the customer turns it back on here.</figcaption>
+  <div class="tv">
+    <div class="brand">REMOTE HELP</div>
+    <span class="badge off">Off</span>
+    <h2 class="title">Remote help is off</h2>
+    <p class="body">Kevin cannot see or control this TV. Turn it back on whenever you need help.</p>
+    <div class="row">
+      <button class="btn focused">Turn on remote help</button>
+      <button class="btn">Uninstall</button>
+    </div>
+  </div>
+</figure>
+</body>
+</html>
