@@ -14,7 +14,8 @@ these 20 TVs" and have it done in parallel.
   stop it at any time.
 
 > Status: early. The CLI works against TVs on the same network, and the direct
-> link has been tested from a remote server to a Fire TV Stick. The TV/phone app
+> link has been tested on a Fire TV Stick (bridge on another device) and an
+> NVIDIA Shield (bridge on the TV itself). The TV/phone app
 > with the consent screens is next.
 
 ## Quick start (same network)

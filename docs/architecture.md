@@ -62,7 +62,7 @@ shared with the project author.
 
 | Device | Bridge | Why |
 |---|---|---|
-| NVIDIA Shield, Google TV | On the TV | adb accepts on-device connections to 127.0.0.1:5555 (checked on Shield, Android 11; full link test pending) |
+| NVIDIA Shield, Google TV | On the TV | On-device adb to 127.0.0.1:5555 works (Shield, Android 11, tested 2026-10-19) |
 | Fire TV | On a phone or other device on the same Wi-Fi | Fire OS refuses on-device adb (see [fire-tv.md](fire-tv.md)) |
 
 ## Customer onboarding (one time)
@@ -97,5 +97,7 @@ cannot be automated.
 ## Status
 
 - Done: tvctl against LAN TVs; direct link tested from a remote server to a Fire
-  TV Stick through a LAN bridge (2026-10-18).
+  TV Stick through a LAN bridge (2026-10-18), and with the bridge running on a
+  Shield itself (2026-10-19: silent app install in 2.7 s while another app kept
+  playing).
 - Next: TV/phone app (Kotlin) with consent screens, short codes, optional TURN.
