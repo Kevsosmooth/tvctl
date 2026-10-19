@@ -38,7 +38,7 @@ func NewRoot() *cobra.Command {
 	f.DurationVar(&a.timeout, "timeout", 2*time.Minute, "per-device time limit")
 
 	root.AddCommand(
-		a.devicesCmd(), a.addCmd(), a.removeCmd(), a.connectCmd(),
+		a.devicesCmd(), a.addCmd(), a.removeCmd(), a.connectCmd(), a.linkCmd(),
 		a.infoCmd(), a.uiCmd(), a.screenshotCmd(),
 		a.keyCmd(), a.textCmd(), a.tapCmd(), a.clickCmd(), a.waitForCmd(),
 		a.appsCmd(), a.installCmd(), a.uninstallCmd(), a.launchCmd(), a.stopCmd(),
