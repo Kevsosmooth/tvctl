@@ -57,6 +57,8 @@ Sideloading the app instead of installing it from Google Play: Settings >
 **Device Preferences** > **Security & restrictions** > **Unknown sources**, allow
 the downloader app.
 
+![Shield Security & restrictions with Unknown sources](screenshots/shield/unknown-sources.png)
+
 Checked on a Shield with Android 11: Network debugging on and USB debugging off
 is enough.
 
