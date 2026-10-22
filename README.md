@@ -33,8 +33,20 @@ Add `--json` to any command for machine-readable output.
 
 ## From anywhere
 
-On the customer's side (TV, or a phone on the same Wi-Fi for Fire TV), run the
-bridge. It creates a pairing code file and waits:
+On Android TV, Google TV and the NVIDIA Shield, the TV owner installs the
+**Remote Help** app (`android/`, an early test build) and presses **Start**. It
+runs tvlink on the TV and shows the pairing code. On the helper's machine, save
+that code to a file and continue with `tvctl link` below.
+
+Build it with Go, the Android SDK and NDK:
+
+```sh
+ANDROID_NDK_HOME=/path/to/ndk android/build-tvlink.sh
+cd android && ./gradlew assembleRelease
+```
+
+To run the bridge by hand instead (or on a phone on the same Wi-Fi, for Fire
+TV), run tvlink. It creates a pairing code file and waits:
 
 ```sh
 tvlink --code-file tvlink.code --target <tv-ip>:5555

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Remote Help</string>
+    <string name="notification_title">Remote help is on</string>
+    <string name="status_stopped">Remote help is off.</string>
+    <string name="status_starting">Starting…</string>
+    <string name="status_waiting">Ready. Share the code below with your helper.</string>
+    <string name="status_joining">Your helper is connecting…</string>
+    <string name="status_connected">Your helper is connected.</string>
+    <string name="code_label">Pairing code</string>
+    <string name="code_none">-</string>
+    <string name="adb_checking">Checking ADB…</string>
+    <string name="adb_on">ADB is on. The first time your helper connects, tick Always allow and press OK.</string>
+    <string name="adb_off">ADB is off. Settings > System > Developer options > turn on USB debugging (on a Shield, also Network debugging), then reopen this app.</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="new_code">New code</string>
+</resources>
