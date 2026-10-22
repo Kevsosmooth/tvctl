@@ -17,8 +17,10 @@ import (
 func main() {
 	codeFile := flag.String("code-file", "/data/local/tmp/tvlink.code", "pairing code file, created if missing")
 	target := flag.String("target", "127.0.0.1:5555", "the TV's adb address")
+	androidSDK := flag.Int("android-sdk", 0, "Android API level, set by the TV app (needed on Android 11+)")
 	flag.Parse()
 	p2p.UseResolverFallback()
+	p2p.UseAndroidSDK(*androidSDK)
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
